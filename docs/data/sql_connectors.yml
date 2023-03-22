@@ -1,0 +1,175 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License
+
+# INSTRUCTIONS:
+#
+# In order to add a new connector/format add a new entry to this file.
+# You need specify a name that will be used in e.g. the description of the connector/format and
+# a category (either "format" or "connector"). The category determines which table will the entry
+# end up in on the Download page. The "maven" parameter describes the name of the maven module. The
+# three parameters are required.
+#
+# If you specify "builtin=true" the corresponding table on the connector/format will not contain
+# a link, but just a "Built-in" entry. If the built-in is set to true you do not need to provide the
+# sql_url.
+#
+# If a connector comes with different versions for the external system, you can put those under a
+# "versions" property. Each entry in the "versions" section should have a "version", which
+# determines name for the version and "maven" and "sql_url" entries for that particular version.
+# If you use the "versions" property, "maven" and "sql_url" should not be present in the top level
+# section of the connector. (Multiple versions are supported only for the connector for now. If you
+# need multiple versions support for formats, please update downloads.md)
+#
+# NOTE: You can use the variables $scala_version and $version in "sql_url" and "maven" properties.
+
+flink-table-store-core:
+    name: flink-table-store-core
+    category: connectors
+    versions: 0.3.0
+    sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-core/$version/flink-table-store-core-$version.jar
+
+flink-table-store-connector:
+    name: flink-table-store-connector
+    category: connectors
+    versions: 0.3.0
+    sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-connector/$version/flink-table-store-connector-$version.jar
+
+flink-table-store-dist:
+  name: flink-table-store-dist
+  category: connectors
+  version: 0.3.0
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-dist/0.3.0/flink-table-store-dist-0.3.0.jar
+flink-table-store-codegen:
+  name: flink-table-store-codegen
+  category: connectors
+  version: 0.3.0
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-codegen/$version/flink-table-store-codegen-$version.jar
+
+flink-table-store-common:
+  name: flink-table-store-common
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-common/$version/flink-table-store-common-$version.jar
+
+flink-table-store-codegen-loader:
+  name: flink-table-store-codegen-loader
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-codegen-loader/$version/flink-table-store-codegen-loadern-$version.jar
+
+flink-table-store-e2e-tests:
+  name: flink-table-store-e2e-tests
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-e2e-tests/$version/flink-table-store-e2e-tests-$version.jar
+
+flink-table-store-format:
+  name: flink-table-store-format
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-format/$version/flink-table-store-format-$version.jar
+
+#only for 0.3
+flink-table-store-filesystems:
+  name: flink-table-store-filesystems
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-filesystems/$version/flink-table-store-filesystems-$version.jar
+
+# since 0.2.0
+flink-table-store-hive:
+  name: flink-table-store-hive
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-hive/$version/flink-table-store-hive-$version.jar
+
+#since 0.2.0
+flink-table-store-hive-catalog:
+  name: flink-table-store-hive-catalog
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-hive-catalog/$version/flink-table-store-hive-catalog-$version.jar
+
+#since 0.2.0
+flink-table-store-hive-common:
+  name: flink-table-store-hive-common
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-hive-common/$version/flink-table-store-hive-common-$version.jar
+
+#since 0.2.0
+flink-table-store-hive-connector:
+  name: flink-table-store-hive-connector
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-hive-connector/$version/flink-table-store-hive-connector-$version.jar
+
+
+flink-table-store-kafka:
+  name: flink-table-store-kafka
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-kafka/$version/flink-table-store-kafka-$version.jar
+
+#since 0.3.0
+flink-table-store-micro-benchmarks:
+  name: flink-table-store-micro-benchmarks
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-micro-benchmarks/$version/flink-table-store-micro-benchmarks-$version.jar
+
+#since 0.3.0
+flink-table-store-oss:
+  name: flink-table-store-oss
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-oss/$version/flink-table-store-oss-$version.jar
+
+flink-table-store-parent:
+  name: flink-table-store-parent
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-parent/$version/flink-table-store-parent-$version.jar
+
+#since 0.3.0
+flink-table-store-s3:
+  name: flink-table-store-s3
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-s3/$version/flink-table-store-s3-$version.jar
+
+#since 0.2.0
+flink-table-store-shade:
+  name: flink-table-store-shade
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-shade/$version/flink-table-store-shade-$version.jar
+
+#since 0.2.0
+flink-table-store-spark:
+  name: flink-table-store-spark
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-spark/$version/flink-table-store-spark-$version.jar
+
+
+#since 0.2.0
+flink-table-store-spark2:
+  name: flink-table-store-parent
+  version: 0.3.0
+  category: connectors
+  sql_url: https://repo.maven.apache.org/maven2/org/apache/flink/flink-table-store-spark2/$version/flink-table-store-spark2-$version.jar
