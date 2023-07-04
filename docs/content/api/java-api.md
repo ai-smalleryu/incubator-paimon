@@ -36,6 +36,12 @@ Maven dependency:
   <artifactId>paimon-bundle</artifactId>
   <version>{{< version >}}</version>
 </dependency>
+
+<dependency>
+  <groupId>org.apache.flink</groupId>
+  <artifactId>flink-shaded-hadoop-2-uber</artifactId>
+  <version>{{< version >}}</version>
+</dependency>
 ```
 
 Or download the jar file:
@@ -48,6 +54,7 @@ Paimon relies on Hadoop environment, you should add hadoop classpath or bundled 
 
 Before coming into contact with the Table, you need to create a Catalog.
 
+### local filesystem catalog
 ```java
 import org.apache.paimon.catalog.Catalog;
 import org.apache.paimon.catalog.CatalogContext;
@@ -57,24 +64,20 @@ import org.apache.paimon.options.Options;
 
 public class CreateCatalog {
 
-    public static void createFilesystemCatalog() {
-        CatalogContext context = CatalogContext.create(new Path("..."));
+    public static void main(String[] args) {
+        //Local filesystem catalog demo catalogPath = file:/tmp/paimon_catalog
+        String catalogPath = "file:/tmp/paimon_catalog";
+        CatalogContext context = CatalogContext.create(new Path("catalogPath"));
         Catalog catalog = CatalogFactory.createCatalog(context);
-    }
-
-    public static void createHiveCatalog() {
-        // Paimon Hive catalog relies on Hive jars
-        // You should add hive classpath or hive bundled jar.
-        Options options = new Options();
-        options.set("warehouse", "...");
-        options.set("metastore", "hive");
-        options.set("uri", "...");
-        options.set("hive-conf-dir", "...");
-        CatalogContext context = CatalogContext.create(options);
-        Catalog catalog = CatalogFactory.createCatalog(context);
+        //You will see the corresponding folder in the corresponding path 
     }
 }
 ```
+### hive catalog
+```java
+
+```
+
 
 ## Create Database
 
@@ -88,7 +91,15 @@ public class CreateDatabase {
 
      public static void main(String[] args) {
             try {
+                String catalogPath = "file:/tmp/paimon_catalog";
+                CatalogContext context = CatalogContext.create(new Path("catalogPath"));
+                Catalog catalog = CatalogFactory.createCatalog(context);
+                // create database
                 catalog.createDatabase("my_db", false);
+                List<String> databases = catalog.listDatabases();
+                System.out.println(databases);
+                // println [my_db]
+                // you will see the my_db folder under catalog
             } catch (Catalog.DatabaseAlreadyExistException e) {
                 // do something
             }
